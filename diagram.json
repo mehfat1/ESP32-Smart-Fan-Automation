@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "Mehak Ansari",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 29.1, "left": 234.6, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -70.8, "left": 167, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 52.8,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "220000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "dht1:VCC", "red", [ "v-38.4", "h120.19", "v153.6" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v9.6", "h-163.2", "v-124.8" ] ],
+    [ "esp:15", "dht1:SDA", "green", [ "h14.44", "h143.9" ] ],
+    [ "esp:2", "led1:A", "green", [ "h0" ] ],
+    [ "esp:GND.3", "r1:2", "black", [ "h0" ] ],
+    [ "r1:1", "led1:C", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
